@@ -11,15 +11,13 @@
 		"default_popup": "quick-index.html"
 	},
 	"permissions": [
-		"http://*.szu.edu.cn/",
-		"http://192.168.2.104/"
+		"http://*.szu.edu.cn/"
 	],
 	"background_page": "background.html",
 	"options_page": "quick-index.html#option",
 	"content_scripts": [
         {"js": ["scripts/jquery.min.js", "scripts/autoauth.js"], "css": [],
-		 "matches": ["http://*.szu.edu.cn/*", "http://192.168.2.104/*",
-					 "http://192.168.2.113/*"],
+		 "matches": ["http://*/*"],
 		 "run_at": "document_start",
 		 "all_frames": true},
 		
