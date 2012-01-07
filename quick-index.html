@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Content-Language" content="zh-CN"/>
+  <title>深圳大学校园网</title>
+  <link href="styles/bootstrap.min.css" type="text/css" rel="stylesheet" />
+  <script src="scripts/jquery.min.js" type="text/javascript"></script>
+  <script src="scripts/public.js" type="text/javascript"></script>
+  <script type="text/javascript" src="scripts/bootstrap/bootstrap-tabs.js"></script>
+  <script type="text/javascript">
+  $(function(){
+    // tabs
+    $('#tabs-content > div[class!="active"]').hide();
+    $('#tabs').bind('change', function (e) {
+      var activated = $(e.target).attr("href");
+      var previous = $(e.relatedTarget).attr("href");
+      $(previous).hide();
+      $(activated).show();
+    });
+    
+    // option
+    $("#hashpwd").val(szu.getHashPassword())
+    $("#hashpwdConfirm").click(function(){
+      szu.setHashPassword($("#hashpwd").val());
+    });
+  });
+  </script>
+  <style type="text/css">
+    html {
+      padding: 20px;
+      overflow: hidden;
+    }
+    body {
+      width: 400px;
+      min-height: 160px;
+      padding: 0;
+      margin: auto;
+    }
+    .btn {
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    #tabs-content > div {
+      padding-left: 10px;
+      text-align: center;
+    }
+    #top {
+      margin-bottom: 12px;
+      text-align: right;
+      overflow: hidden;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed #ddd;
+    }
+    #top .lefttext {
+      float: left;
+    }
+    #top h1 {
+      font-size: 1.8em;
+      cursor: default;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="top">
+    <h1 class="lefttext" onselectstart="return false;">深圳大学校园网</h1>
+    <a href="http://www.szu.edu.cn/szu.asp" target="_blank" class="btn success">校园网主页</a>
+    <a href="http://www.szu.edu.cn/szu2007/docc/xxxl.asp" target="_blank" class="btn success">校历</a>
+  </div>
+
+  <ul id="tabs" class="tabs" data-tabs="tabs">
+    <li class="active"><a href="#academic">教学</a></li>
+    <li><a href="#leisure">文化</a></li>
+    <li><a href="#administration">行政</a></li>
+    <li><a href="#service">服务</a></li>
+    <li><a href="#library">知识资源</a></li>
+    <li><a href="#option">设置</a></li>
+  </ul>
+  
+  <div id="tabs-content" class="tabs-content">
+    <div class="active" id="academic">
+      <a href="http://192.168.2.20/" target="_blank" class="btn large">教务部</a>
+      <a href="http://webcc.szu.edu.cn/" target="_blank" class="primary btn large">网上课程 WebCC</a>
+      <a href="http://192.168.240.168/xuanke/edu_login.asp" target="_blank" class="btn large">选课系统</a>
+      <a href="http://192.168.2.229/newkc/content.asp" target="_blank" class="btn large">已开设课程信息</a>
+      <a href="http://etd.lib.szu.edu.cn/" target="_blank" class="btn large">学位论文</a>
+      <a href="http://vod.szu.edu.cn/newvod/vodlist/teaching.asp" target="_blank" class="btn large">公共课件</a>
+    </div>
+    <div id="leisure">
+      <a href="http://www.szu.edu.cn/leisure" target="_blank" class="primary btn large">网络电视</a>
+      <a href="http://vod.szu.edu.cn/newvod/" target="_blank" class="btn large">影片展播</a>
+      <a href="http://vod.szu.edu.cn/newvod/" target="_blank" class="btn large">视频 VOD 点播</a>
+      <a href="http://stu.szu.edu.cn/" target="_blank" class="btn large">学子天地</a>
+      <a href="http://yigong.szu.edu.cn/" target="_blank" class="btn large">义工联</a>
+      <a href="http://bbs.szu.edu.cn/" target="_blank" class="btn large">荔园晨风 BBS</a>
+    </div>
+    <div id="administration">
+      <a href="http://www.szu.edu.cn/mailbox/division.asp" target="_blank" class="btn large">部门信箱</a>
+      <a href="http://www.szu.edu.cn/mailbox/leader.asp" target="_blank" class="primary btn large">校长信箱</a>
+      <a href="http://www.szu.edu.cn/mailbox/department.asp" target="_blank" class="btn large">院系信箱</a>
+      <a href="http://szuqz.szu.edu.cn/" target="_blank" class="btn large">勤工助学</a>
+      <a href="http://student.szu.edu.cn/swzx/" target="_blank" class="btn large">学生事务</a>
+      <a href="http://job.szu.edu.cn/" target="_blank" class="btn large">就业指导</a>
+    </div>
+    <div id="service">
+      <a href="http://ecard.szu.edu.cn/card/" target="_blank" class="btn large">校园卡</a>
+      <a href="http://www.szu.edu.cn/nc" target="_blank" class="btn large">网络中心</a>
+      <a href="https://exmail.qq.com/domain/email.szu.edu.cn" target="_blank" class="primary btn large">校园邮箱</a>
+      <a href="http://www.szu.edu.cn/service/lostfound" target="_blank" class="primary btn large">寻物&amp;招领</a>
+      <a href="http://www.cpm.gd.cn/cpmnews/sd_add_ts.asp" target="_blank" class="btn large">中航物业</a>
+      <a href="http://gyzx.szu.edu.cn/" target="_blank" class="btn large">公寓管理中心</a>
+    </div>
+    <div id="library">
+      <a href="http://ecard.szu.edu.cn/card/" target="_blank" class="primary btn large">校图书馆</a>
+      <a href="http://www.oalib.com/" target="_blank" class="primary btn large">开放存取图书馆</a>
+      <a href="http://websc.szu.edu.cn/wcc/more.asp?categoryid=15" target="_blank" class="btn large">采购的课件</a>
+      <a href="http://websc.szu.edu.cn/wcc/more.asp?categoryid=14" target="_blank" class="btn large">自主研发的课件</a>
+      <a href="http://www.duxiu.com/" target="_blank" class="btn large">读秀</a>
+      <a href="http://founder.lib.szu.edu.cn/Usp/" target="_blank" class="btn large">方正电子图书</a>
+    </div>
+    <div id="option">
+      <div class="well">
+        <p class="input">
+          <input id="hashpwd" name="hashpwd" size="16" type="password" placeholder="请在此处输入查询密码散列值">
+        </p>
+        <p class="input">
+          <input id="hashpwdConfirm" type="button" value="确定" class="primary btn">
+          <a href="http://tonyseek.com/project/szu-web-assistant/authhash" target="_blank" class="btn">查询我的密码散列值</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

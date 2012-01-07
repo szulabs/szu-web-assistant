@@ -1,0 +1,44 @@
+{
+	"name": "深圳大学校园网助手",
+	"version": "0.1",
+	"description": "解决深圳大学校园网与 Chrome/Chromium 的种种兼容性问题，改善公文通、WebCC、网络电视等校园网产品的细节体验。",
+	"icons": {"16": "icon.png",             
+			  "48": "icon.png",            
+			  "128": "icon.png" },
+	"browser_action": {
+		"default_icon": "icon.png",
+		"default_title": "深圳大学校园网",
+		"default_popup": "quick-index.html"
+	},
+	"permissions": [
+		"http://*.szu.edu.cn/",
+		"http://192.168.2.104/"
+	],
+	"background_page": "background.html",
+	"content_scripts": [
+        {"js": ["scripts/jquery.min.js", "scripts/autoauth.js"], "css": [],
+		 "matches": ["http://*.szu.edu.cn/*", "http://192.168.2.104/*",
+					 "http://192.168.2.113/*"],
+		 "run_at": "document_start",
+		 "all_frames": true},
+		
+        {"js": ["scripts/jquery.min.js", "scripts/academic-affairs.js"], "css": [],
+		 "matches": ["http://192.168.2.20/*"],
+		 "run_at": "document_end",
+		 "all_frames": true},
+		
+		{"js": ["scripts/jquery.min.js", "scripts/board.js"], "css": [],
+		 "matches": ["http://www.szu.edu.cn/board/read.asp*"],
+		 "run_at": "document_start"},
+		
+		{"js": ["scripts/jquery.min.js", "scripts/tv.js"], "css": [],
+		 "matches": ["http://www.szu.edu.cn/leisure/*"],
+		 "run_at": "document_start",
+		 "all_frames": true},
+		 
+		{"js": ["scripts/jquery.min.js", "scripts/webcc.js"], "css": [],
+		 "matches": ["http://192.168.2.104/webcc/*"],
+		 "run_at": "document_start",
+		 "all_frames": true}
+    ]
+}
