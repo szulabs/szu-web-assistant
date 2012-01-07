@@ -11,8 +11,12 @@
   <script type="text/javascript">
   $(function(){
     // tabs
+    var LAST_TAB = "quick-index-last-tab";
     if (window.location.hash) {
       $("a[href='" + window.location.hash + "']").trigger("click");
+    }
+    if (window.localStorage[LAST_TAB]) {
+      $("a[href='#" + window.localStorage[LAST_TAB] + "']").trigger("click");
     }
     
     $('#tabs-content > div[class!="active"]').hide();
@@ -21,6 +25,8 @@
       var previous = $(e.relatedTarget).attr("href");
       $(previous).hide();
       $(activated).show();
+      window.localStorage[LAST_TAB] = $(activated).attr("id");
+      console.log(window.localStorage[LAST_TAB]);
     });
     
     // messagebox
