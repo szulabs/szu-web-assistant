@@ -4,6 +4,10 @@
  * author: tonyseek
  */
 $(function(){
+	var match = /[a-zA-Z0-9-]+\.szu\.edu\.cn/.test(document.location.hostname);
+	match = match || /192\.168\.\d+\.\d+/.test(document.location.hostname);
+	if (!match) { return; }
+
 	$("a[href*='cardactivex.exe']").hide();
 	$("object[codeBase^='PasswdEdit']").each(function(){
 		var id = $(this).attr("id");
