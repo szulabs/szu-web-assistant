@@ -23,10 +23,27 @@
       $(activated).show();
     });
     
+    // messagebox
+    $("#saveSuccessMsg").hide();
+    $("#invalidMsg").hide();
+    
+    var showMsg = function(selector) {
+      $(selector).slideDown();
+      $(selector + " .close").click(function() {
+        $(selector).slideUp();
+      });
+    };
+    
     // option
     $("#hashpwd").val(szu.getHashPassword())
     $("#hashpwdConfirm").click(function(){
-      szu.setHashPassword($("#hashpwd").val());
+      var value = $("#hashpwd").val();
+      if (!(/^[0-9A-F]{16}$/.test(value))) {
+        showMsg("#invalidMsg");
+        return;
+      }
+      szu.setHashPassword(value);
+      showMsg("#saveSuccessMsg");
     });
   });
   </script>
@@ -125,6 +142,14 @@
     </div>
     <div id="option">
       <div class="well">
+        <div class="alert-message success" data-alert="data-alert" id="saveSuccessMsg">
+          <a class="close" href="#">×</a>
+          <p>您的查询密码散列值已保存</p>
+        </div>
+        <div class="alert-message error" data-alert="data-alert" id="invalidMsg">
+          <a class="close" href="#">×</a>
+          <p>请输入有效的散列值（从这里<em><a href="http://tonyseek.com/project/szu-web-assistant/authhash" target="_blank">查询</a></em>得到）</p>
+        </div>
         <div class="alert-message info">
           <p>
             绑定<strong title="您不需要知道这是什么，只要查询、复制、粘贴三部即可"><a href="http://tonyseek.com/project/szu-web-assistant/authhash" target="_blank">查询密码散列值</a></strong>后，登录 WebCC、校长信箱等系统时会自动填充查询密码，以替代 IE 下的密码控件。
