@@ -11,6 +11,10 @@
   <script type="text/javascript">
   $(function(){
     // tabs
+    if (window.location.hash) {
+      $("a[href='" + window.location.hash + "']").trigger("click");
+    }
+    
     $('#tabs-content > div[class!="active"]').hide();
     $('#tabs').bind('change', function (e) {
       var activated = $(e.target).attr("href");
@@ -121,6 +125,11 @@
     </div>
     <div id="option">
       <div class="well">
+        <div class="alert-message info">
+          <p>
+            绑定<strong title="您不需要知道这是什么，只要查询、复制、粘贴三部即可"><a href="http://tonyseek.com/project/szu-web-assistant/authhash" target="_blank">查询密码散列值</a></strong>后，登录 WebCC、校长信箱等系统时会自动填充查询密码，以替代 IE 下的密码控件。
+          </p>
+        </div>
         <p class="input">
           <input id="hashpwd" name="hashpwd" size="16" type="password" placeholder="请在此处输入查询密码散列值">
         </p>

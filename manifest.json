@@ -15,6 +15,7 @@
 		"http://192.168.2.104/"
 	],
 	"background_page": "background.html",
+	"options_page": "quick-index.html#option",
 	"content_scripts": [
         {"js": ["scripts/jquery.min.js", "scripts/autoauth.js"], "css": [],
 		 "matches": ["http://*.szu.edu.cn/*", "http://192.168.2.104/*",
