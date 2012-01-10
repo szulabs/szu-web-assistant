@@ -3,13 +3,18 @@
 <head>
 <script src="scripts/public.js" type="text/javascript"></script>
 <script type="text/javascript">
-chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-  if (request.method == "getHashPassword") {
-    sendResponse({result: szu.getHashPassword()});
-  } else {
-    sendResponse({});
-  }
-});
+(function(chrome, chromex, window){
+  chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+    if (!("method" in request)) { request.method = ""; }
+    if (!("args" in request)) { request.args = []; }
+    if (request.method in chromex) {
+      sendResponse({result: chromex[request.method].apply(null, request.args)});
+    } else {
+      sendResponse({});
+    }
+  });
+})(chrome, chromex, window);
+
 </script>
 </head>
 <body>
