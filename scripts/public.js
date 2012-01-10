@@ -1,19 +1,23 @@
 (function(window){
-	var szu = new Object();
-	
+	var chromex = window.chromex = function(method, args, callback) {
+		chrome.extension.sendRequest({method: method, args: args}, function(response){
+			callback.call(chromex, response.result);
+		});
+	};
+
 	// option support
 	var HASH_PWD_KEY = "hash-password";
-	szu.setHashPassword = function(value) {
+	chromex.setHashPassword = function(value) {
 		window.localStorage[HASH_PWD_KEY] = value;
-	}
-	szu.getHashPassword = function() {
+	};
+	chromex.getHashPassword = function() {
 		var value = window.localStorage[HASH_PWD_KEY];
 		if (typeof value == "undefined") {
 			return "";
 		} else {
 			return value;
 		}
-	}
+	};
 	
-	window.szu = szu;
+	
 })(window);

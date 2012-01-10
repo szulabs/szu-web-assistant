@@ -11,22 +11,33 @@
 		"default_popup": "quick-index.html"
 	},
 	"permissions": [
-		"http://*.szu.edu.cn/"
+		"http://*.szu.edu.cn/",
+		"http://192.168.2.*/*"
 	],
 	"background_page": "background.html",
 	"options_page": "quick-index.html#option",
 	"content_scripts": [
-        {"js": ["scripts/jquery.min.js", "scripts/autoauth.js"], "css": [],
-		 "matches": ["http://*/*"],
+        {"js": ["scripts/jquery.min.js",
+		        "scripts/public.js",
+				"scripts/autoauth.js"],
+		 "css": [],
+		 "matches": ["http://*.szu.edu.cn/*",
+		             "http://192.168.2.104/*",
+					 "http://192.168.2.113/*",
+					 "http://192.168.2.210/*"],
 		 "run_at": "document_start",
 		 "all_frames": true},
 		
-        {"js": ["scripts/jquery.min.js", "scripts/academic-affairs.js"], "css": [],
+        {"js": ["scripts/jquery.min.js",
+		        "scripts/academic-affairs.js"],
+		 "css": [],
 		 "matches": ["http://192.168.2.20/*"],
 		 "run_at": "document_end",
 		 "all_frames": true},
 		
-		{"js": ["scripts/jquery.min.js", "scripts/board.js"], "css": [],
+		{"js": ["scripts/jquery.min.js",
+		        "scripts/board.js"],
+		 "css": [],
 		 "matches": ["http://www.szu.edu.cn/board/read.asp*"],
 		 "run_at": "document_start"},
 		
@@ -35,8 +46,11 @@
 		 "run_at": "document_start",
 		 "all_frames": true},
 		 
-		{"js": ["scripts/jquery.min.js", "scripts/webcc.js"], "css": [],
-		 "matches": ["http://192.168.2.104/webcc/*"],
+		{"js": ["scripts/jquery.min.js",
+		        "scripts/webcc.js"],
+		 "css": [],
+		 "matches": ["http://192.168.2.104/*",
+		             "http://192.168.2.103/*"],
 		 "run_at": "document_start",
 		 "all_frames": true}
     ]

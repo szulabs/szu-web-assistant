@@ -4,12 +4,8 @@
  * author: tonyseek
  */
 $(function(){
-	var match = /[a-zA-Z0-9-]+\.szu\.edu\.cn/.test(document.location.hostname);
-	match = match || /192\.168\.\d+\.\d+/.test(document.location.hostname);
-	if (!match) { return; }
-
 	$("a[href*='cardactivex.exe']").hide();
-	$("object[codeBase^='PasswdEdit']").each(function(){
+	$("object[classid='clsid:305C213C-780C-432D-8417-23E53F2EE830']").each(function(){
 		var id = $(this).attr("id");
 		$("<input>").attr("type", "password")
 			.attr("disabled", "disabled")
@@ -17,9 +13,9 @@ $(function(){
 			.val("szuauth")
 			.appendTo($(this));
 		
-		chrome.extension.sendRequest({method: "getHashPassword"}, function(r){
+		chromex("getHashPassword", [], function(result){
 			var script = document.createElement("script");
-			script.text = id + ".text = '" + r.result + "';";
+			script.text = id + ".text = '" + result + "';";
 			document.head.appendChild(script);
 		});
 	});
