@@ -7,6 +7,12 @@ $(function(){
 	altAlertTag.text = altAlert;
 	document.head.appendChild(altAlertTag);
 
+	// 覆盖不兼容高版本 Chrome 的展开树
+	var expandTree = document.createElement("script");
+	expandTree.type = "text/javascript";
+	expandTree.src = chrome.extension.getURL("/scripts/webcc-expandtree.js");
+	document.head.appendChild(expandTree);
+
 	if (window.name != "topFrame") {
 		return;
 	}
