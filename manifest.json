@@ -1,6 +1,7 @@
 {
 	"name": "深圳大学校园网助手",
 	"version": "0.11",
+    "manifest_version": 2,
 	"description": "解决深圳大学校园网与 Chrome/Chromium 的种种兼容性问题，改善公文通、WebCC、网络电视等校园网产品的细节体验。",
 	"icons": {"16": "icon.png",             
 			  "48": "icon.png",            
@@ -10,10 +11,6 @@
 		"default_title": "深圳大学校园网",
 		"default_popup": "quick-index.html"
 	},
-	"permissions": [
-		"http://*.szu.edu.cn/",
-		"http://192.168.2.*/*"
-	],
 	"background_page": "background.html",
 	"options_page": "quick-index.html#option",
 	"content_scripts": [
