@@ -1,0 +1,33 @@
+html {
+  padding: 20px;
+  overflow: hidden;
+}
+body {
+  width: 400px;
+  min-height: 160px;
+  padding: 0;
+  margin: auto;
+}
+.btn {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+#tabs-content > div {
+  padding-left: 10px;
+  text-align: center;
+}
+#top {
+  margin-bottom: 12px;
+  text-align: right;
+  overflow: hidden;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #ddd;
+}
+#top .lefttext {
+  float: left;
+}
+#top h1 {
+  font-size: 1.8em;
+  cursor: default;
+  margin: 0;
+}

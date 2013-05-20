@@ -5,95 +5,16 @@
   <meta http-equiv="Content-Language" content="zh-CN"/>
   <title>深圳大学校园网</title>
   <link href="styles/bootstrap.min.css" type="text/css" rel="stylesheet" />
+  <link href="styles/quick-index.css" type="text/css" rel="stylesheet" />
   <base target="_blank">
   <script src="scripts/jquery.min.js" type="text/javascript"></script>
   <script src="scripts/public.js" type="text/javascript"></script>
   <script type="text/javascript" src="scripts/bootstrap/bootstrap-tabs.js"></script>
-  <script type="text/javascript">
-  $(function(){
-    // tabs
-    var LAST_TAB = "quick-index-last-tab";
-    if (window.location.hash) {
-      $("a[href='" + window.location.hash + "']").trigger("click");
-    }
-    if (window.localStorage[LAST_TAB]) {
-      $("a[href='#" + window.localStorage[LAST_TAB] + "']").trigger("click");
-    }
-    
-    $('#tabs-content > div[class!="active"]').hide();
-    $('#tabs').bind('change', function (e) {
-      var activated = $(e.target).attr("href");
-      var previous = $(e.relatedTarget).attr("href");
-      $(previous).hide();
-      $(activated).show();
-      window.localStorage[LAST_TAB] = $(activated).attr("id");
-      console.log(window.localStorage[LAST_TAB]);
-    });
-    
-    // messagebox
-    $("#saveSuccessMsg").hide();
-    $("#invalidMsg").hide();
-    
-    var showMsg = function(selector) {
-      $(selector).slideDown();
-      $(selector + " .close").click(function() {
-        $(selector).slideUp();
-        return false;
-      });
-    };
-    
-    // option
-    $("#hashpwd").val(chromex.getHashPassword())
-    $("#hashpwdConfirm").click(function(){
-      var value = $("#hashpwd").val();
-      if (!(/^[0-9A-F]{16}$/.test(value))) {
-        showMsg("#invalidMsg");
-        return;
-      }
-      chromex.setHashPassword(value);
-      showMsg("#saveSuccessMsg");
-    });
-  });
-  </script>
-  <style type="text/css">
-    html {
-      padding: 20px;
-      overflow: hidden;
-    }
-    body {
-      width: 400px;
-      min-height: 160px;
-      padding: 0;
-      margin: auto;
-    }
-    .btn {
-      margin-right: 10px;
-      margin-bottom: 10px;
-    }
-    #tabs-content > div {
-      padding-left: 10px;
-      text-align: center;
-    }
-    #top {
-      margin-bottom: 12px;
-      text-align: right;
-      overflow: hidden;
-      padding-bottom: 8px;
-      border-bottom: 1px dashed #ddd;
-    }
-    #top .lefttext {
-      float: left;
-    }
-    #top h1 {
-      font-size: 1.8em;
-      cursor: default;
-      margin: 0;
-    }
-  </style>
+  <script type="text/javascript" src="scripts/quick-index.js"></script>
 </head>
 <body>
   <div id="top">
-    <h1 class="lefttext" onselectstart="return false;">深圳大学校园网</h1>
+    <h1 class="lefttext">深圳大学校园网</h1>
     <a href="http://www.szu.edu.cn/szu.asp" class="btn success">校园网主页</a>
     <a href="http://www.szu.edu.cn/board/read.asp" class="btn success">公文通</a>
   </div>
