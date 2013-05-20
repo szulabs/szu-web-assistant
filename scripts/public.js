@@ -1,6 +1,6 @@
 (function(window){
 	var chromex = window.chromex = function(method, args, callback) {
-		chrome.extension.sendRequest({method: method, args: args}, function(response){
+		chrome.runtime.sendMessage({method: method, args: args}, function(response){
 			callback.call(chromex, response.result);
 		});
 	};
