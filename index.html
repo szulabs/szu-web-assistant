@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>SZU Web Assistant by szulabs</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">SZU Web Assistant</h1>
+        <p class="header">解决深圳大学校园网与 Chrome/Chromium 的兼容性问题</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/szulabs/szu-web-assistant/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/szulabs/szu-web-assistant/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/szulabs/szu-web-assistant">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/szulabs">szulabs</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a name="szu-web-assistant" class="anchor" href="#szu-web-assistant"><span class="octicon octicon-link"></span></a>SZU Web Assistant</h1>
+
+<p>这是一个 Chrome/Chromium 浏览器扩展，用来提示深圳大学校园网产品使用体验，解决多种浏览器兼容性问题。</p>
+
+<h2>
+<a name="" class="anchor" href="#"><span class="octicon octicon-link"></span></a>特性</h2>
+
+<p>安装本扩展后，可以在 Chrome/Chromium 浏览器中体验如下特性：</p>
+
+<ul>
+<li>观看深圳大学内部网的网络电视（而不用打开 IE）</li>
+<li>登录使用旧的认证方法（密码控件）的网页应用</li>
+<li>修复并正常使用公文通和 WebCC（旧的在线作业提交系统）因浏览器兼容性问题而无法使用的功能</li>
+<li>以正常尺寸和页面布局查看教务部网页</li>
+</ul><p>等等……</p>
+
+<h2>
+<a name="-1" class="anchor" href="#-1"><span class="octicon octicon-link"></span></a>安装</h2>
+
+<p>最新版始终可以在<a href="http://szulabs.github.io/szu-web-assistant/downloads/szu-web-assistant.crx">这里</a>下载到。</p>
+
+<p>新版的 Chrome/Chromium 会拒绝安装 Chrome Store 以外的扩展，所以你可能需要自己**将本扩展拖拽到扩展管理页面**。具体如何操作，可以参考<a href="http://www.geekpark.net/read/view/161039">这里</a>。</p>
+
+<h2>
+<a name="-2" class="anchor" href="#-2"><span class="octicon octicon-link"></span></a>打包</h2>
+
+<p>如果你是一名开发者，你也可以自己构建和打包这个扩展。在这么做之前，你需要准备 <a href="http://nodejs.org/">nodejs</a> 和安装在系统全局的 <a href="http://coffeescript.org/">coffee-script</a> 编译器作为构建环境。</p>
+
+<pre><code>$ npm install  # install dependencies
+$ cake package  # package the extension
+</code></pre>
+
+<p>私钥文件 <code>.szu-web-assistant.pem</code> 默认放在用户目录下。你应该保管好它，并不要泄漏给他人。</p>
+
+<h2>
+<a name="-3" class="anchor" href="#-3"><span class="octicon octicon-link"></span></a>贡献</h2>
+
+<p>如果你愿意，你可以 fork 这个项目并通过 pull request 向我们贡献代码。</p>
+
+<p>如果你发现了 Bug 或者期待某项功能，你可以在 <a href="https://github.com/szulabs/szu-web-assistant/issues">Issue 列表</a> 中创建新的 Issue。</p>
+
+<p>本项目由 <a href="http://szulabs.org">学子网实验室</a> 开发和维护, 这是由 <a href="http://stu.szu.edu.cn">深圳大学学子天地</a> 成员组成的非官方社群。</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		          <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-19280508-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
