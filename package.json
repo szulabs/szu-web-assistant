@@ -1,0 +1,13 @@
+{
+    "repository":
+    {
+        "type": "git",
+        "url": "git://github.com/szulabs/szu-web-assistant.git"
+    },
+    "dependencies":
+    {
+        "coffee-script": ">= 1.6.2",
+        "crx": ">= 0.2.9",
+        "rimraf": ">= 2.1.4"
+    }
+}
