@@ -62,7 +62,11 @@
       "run_at": "document_start"
     },
     {
-      "js": ["scripts/jquery.min.js", "scripts/tv.js"],
+      "js":
+      [
+        "scripts/jquery.min.js",
+        "lib/fixers/online-tv/player-fixer.js"
+      ],
       "css": [],
       "matches": ["http://www.szu.edu.cn/leisure/*"],
       "run_at": "document_start",
