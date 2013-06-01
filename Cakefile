@@ -29,19 +29,24 @@ shellRun = (command, args=[], cb=null) ->
 
 
 # Builds with coffee-script command utility
-build = (args=[]) ->
+build = (args=[], cb=undefined) ->
   shellRun "coffee", args.concat(["-c", "-o", "lib", "src"]), ->
     log "build finished"
+    cb?()
 
 
 # Cleans files
-clean = (filenames) ->
-  for filename in filenames
-    do (filename)->
+clean = (filenames, cb=undefined) ->
+  _rm = (filename) ->
+    if filename
       fullpath = path.join(__dirname, filename)
       rimraf fullpath, (error) ->
         throw error if error
         log "clean #{fullpath}"
+        _rm(filenames.pop())
+    else
+      cb?()
+  _rm(filenames.pop())
 
 
 # Creates or uses exists private key
@@ -60,7 +65,7 @@ findPrivateKey = (location, cb) ->
 
 
 # Packages the crx archive
-packageCrx = (args) ->
+packageCrx = (args, cb) ->
   findPrivateKey args.key, ->
     # read the private key content
     privateKey = fs.readFileSync(args.key)
@@ -71,6 +76,7 @@ packageCrx = (args) ->
       fs.writeFileSync(args.target, data)
       log "package created: #{args.target}"
       @destroy()
+      cb?(extension)
 
 
 # ----------------
@@ -88,9 +94,9 @@ task "clean", "remove all compiled files.", ->
   clean(["lib", "#{EXTENSION_NAME}.crx"])
 
 task "package", "package the crx file.", ->
-  clean(["lib", "#{EXTENSION_NAME}.crx"])
-  build()
-  packageCrx
-    source: __dirname,
-    target: path.join(__dirname, "#{EXTENSION_NAME}.crx"),
-    key: path.join(getHomeDirectory(), ".#{EXTENSION_NAME}.pem")
+  clean ["lib", "#{EXTENSION_NAME}.crx"], ->
+    build [], ->
+      packageCrx
+        source: __dirname,
+        target: path.join(__dirname, "#{EXTENSION_NAME}.crx"),
+        key: path.join(getHomeDirectory(), ".#{EXTENSION_NAME}.pem")
