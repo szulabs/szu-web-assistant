@@ -26,7 +26,7 @@
     {
       "js":
       [
-        "scripts/jquery.min.js",
+        "deps/jquery.min.js",
         "lib/fixers/legacy-password-control/fake-activex.js"
       ],
       "css": [],
@@ -43,7 +43,7 @@
     {
       "js":
       [
-        "scripts/jquery.min.js",
+        "deps/jquery.min.js",
         "lib/fixers/the-office-of-academic-affairs/iframe-height-fixer.js"
       ],
       "css": [],
@@ -54,7 +54,7 @@
     {
       "js":
       [
-        "scripts/jquery.min.js",
+        "deps/jquery.min.js",
         "lib/fixers/public-board/index-fixer.js"
       ],
       "css": [],
@@ -64,7 +64,7 @@
     {
       "js":
       [
-        "scripts/jquery.min.js",
+        "deps/jquery.min.js",
         "lib/fixers/online-tv/player-fixer.js"
       ],
       "css": [],
@@ -75,7 +75,7 @@
     {
       "js":
       [
-        "scripts/jquery.min.js",
+        "deps/jquery.min.js",
         "lib/fixers/legacy-webcc/expandtree-fixer.js"
       ],
       "css": [],
