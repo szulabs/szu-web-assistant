@@ -12,7 +12,7 @@
         "default_popup": "quick-index.html"
     },
     "background": {
-        "scripts": ["background.js"],
+        "scripts": ["lib/background.js"],
         "persistent": false
     },
     "options_page": "quick-index.html#option",
