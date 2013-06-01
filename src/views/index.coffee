@@ -30,11 +30,11 @@ $ ->
       event.preventDefault()
 
   # option
-  $("#hashpwd").val(chromex.getHashPassword())
+  $("#hashpwd").val(window.localStorage["hashed-password"] or "")
   $("#hashpwdConfirm").click ->
     value = $("#hashpwd").val()
     if not /^[0-9A-F]{16}$/.test(value)
       showMsg("#invalidMsg")
     else
-      chromex.setHashPassword(value)
+      window.localStorage["hashed-password"] = value
       showMsg("#saveSuccessMsg")

@@ -27,8 +27,7 @@
       "js":
       [
         "scripts/jquery.min.js",
-        "scripts/public.js",
-        "/lib/fixers/legacy-password-control/fake-activex.js"
+        "lib/fixers/legacy-password-control/fake-activex.js"
       ],
       "css": [],
       "matches":

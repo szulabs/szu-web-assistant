@@ -5,7 +5,7 @@ $ ->
 
   # build fake password control with regular html element
   $("object[classid='clsid:305C213C-780C-432D-8417-23E53F2EE830']").each ->
-    id = $(this).attr("id")
+    control_id = $(this).attr("id")
     password_control = $("<input>").val("szuauth").attr
       "type": "password",
       "disabled": "disabled",
@@ -13,7 +13,7 @@ $ ->
     $(this).append(password_control)
 
     # get hashed password from extension's storage
-    chromex "getHashPassword", [], (result) ->
+    chrome.runtime.sendMessage "GetHashedPassword", (password) ->
       script = document.createElement("script")
-      script.text = "#{id}.text = '#{result}';"
+      script.text = "#{control_id}.text = '#{password}';"
       document.head.appendChild(script)
