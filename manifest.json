@@ -70,7 +70,11 @@
       "all_frames": true
     },
     {
-      "js": ["scripts/jquery.min.js", "scripts/webcc.js"],
+      "js":
+      [
+        "scripts/jquery.min.js",
+        "lib/fixers/legacy-webcc/expandtree-fixer.js"
+      ],
       "css": [],
       "matches":
         [
