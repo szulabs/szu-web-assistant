@@ -56,7 +56,7 @@
       "js":
       [
         "scripts/jquery.min.js",
-        "scripts/board.js"
+        "lib/fixers/public-board/index-fixer.js"
       ],
       "css": [],
       "matches": ["http://www.szu.edu.cn/board/read.asp*"],
