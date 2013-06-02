@@ -1,12 +1,9 @@
 $ ->
-  urlPattern = /playnow\(['"]([a-zA-Z0-9\.\/\:]+)["']\)/
-  url = ""
-  $("script").each ->
-    text = $(this).text()
-    if urlPattern.test(text)
-      url = urlPattern.exec(text)[1]
-  mediaPlayerParam = $("<param>").attr(name: "src", value: url)
-  mediaPlayer = $("object#MediaPlayer").removeAttr("CLASSID").attr
+  pattern = /playnow\(['"]([a-zA-Z0-9\.\/\:]+)["']\)/
+  url = $("script").map(-> $(this).text())
+                   .filter((i, text) -> pattern.test(text))
+                   .map((i, text) -> pattern.exec(text)[1])[0] or ""
+  param = $("<param>").attr(name: "src", value: url)
+  player = $("object#MediaPlayer").removeAttr("CLASSID").append(param).attr
     "type": "video/x-ms-wmv",
-    "data": url,
-  mediaPlayer.append(mediaPlayerParam)
+    "data": url
