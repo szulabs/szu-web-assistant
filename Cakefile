@@ -35,18 +35,23 @@ build = (args=[], cb=undefined) ->
     cb?()
 
 
-# Cleans files
-clean = (filenames, cb=undefined) ->
-  _rm = (filename) ->
-    if filename
-      fullpath = path.join(__dirname, filename)
-      rimraf fullpath, (error) ->
+# Removes files
+removeFiles = (paths, cb) ->
+  _rm = (path) ->
+    if path
+      rimraf path, (error) ->
         throw error if error
-        log "clean #{fullpath}"
-        _rm(filenames.pop())
+        log "clean #{path}"
+        _rm(paths.pop())
     else
       cb?()
-  _rm(filenames.pop())
+  _rm(paths.pop())
+
+
+# Cleans files in current working directory
+clean = (filenames, cb=undefined) ->
+  paths = (path.join(__dirname, filename) for filename in filenames)
+  removeFiles(paths, cb)
 
 
 # Creates or uses exists private key
@@ -71,12 +76,19 @@ packageCrx = (args, cb) ->
     privateKey = fs.readFileSync(args.key)
     # package extension
     extension = new crx(rootDirectory: args.source, privateKey: privateKey)
+    loadContents = extension.loadContents
+    # remove useless files
+    extension.loadContents = (cb) ->
+      filenames = ["node_modules", "src", "Cakefile", "package.json"]
+      paths = (path.resolve(this.path, filename) for filename in filenames)
+      removeFiles paths, =>
+        loadContents.call?(this, cb)
     extension.pack (error, data) ->
       throw error if error
       fs.writeFileSync(args.target, data)
       log "package created: #{args.target}"
       @destroy()
-      cb?(extension)
+      cb?()
 
 
 # ----------------
