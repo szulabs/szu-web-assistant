@@ -8,6 +8,7 @@ crx = require "crx"
 {log} = require "util"
 
 EXTENSION_NAME = "szu-web-assistant"
+EXTENSION_MANIFEST = ["assets", "deps", "lib", "views", "manifest.json"]
 
 # --------------------
 # Functions Defination
@@ -79,9 +80,10 @@ packageCrx = (args, cb) ->
     loadContents = extension.loadContents
     # remove useless files
     extension.loadContents = (cb) ->
-      filenames = ["node_modules", "src", "Cakefile", "package.json"]
-      paths = (path.resolve(this.path, filename) for filename in filenames)
-      removeFiles paths, =>
+      allFiles = fs.readdirSync(this.path)
+      isUseless = (filename) -> filename not in EXTENSION_MANIFEST
+      uselessFiles = (path.resolve(this.path, f) for f in allFiles when isUseless(f))
+      removeFiles uselessFiles, =>
         loadContents.call?(this, cb)
     extension.pack (error, data) ->
       throw error if error
