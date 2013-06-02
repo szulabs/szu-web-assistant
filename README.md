@@ -1,8 +1,8 @@
 SZU Web Assistant
 =================
 
-This is a Chrome/Chromium extension to improve many web applications of
-Shenzhen University.
+This is a Chrome/Chromium extension which hopes to solve the compatibility
+problems happened on web applications of Shenzhen University.
 
 
 Features
