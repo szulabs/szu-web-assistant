@@ -43,11 +43,17 @@ that, you need to prepare the [nodejs][2] and global-installed
 The private key `.szu-web-assistant.pem` will located at your home directory by
 default. You should "keep it secret" and "keep it safe" as Gandalf told.
 
+### Tips
+
+* It will waste much time if you trying to package on Microsoft Windows.
+* If you insist on packaging on Windows, you could use Chrome Extension
+  Manager, here are [documents][7].
+
 
 Contributes
 -----------
 
-If you like you can fork this project and send pull request to us.
+You can fork this project and send us pull requests if you like.
 
 If you found bugs or wish for more features, you could create issues [here][4].
 
@@ -63,3 +69,4 @@ community of the [StuCampus][6].
 [4]: https://github.com/szulabs/szu-web-assistant/issues
 [5]: http://szulabs.org
 [6]: http://stu.szu.edu.cn
+[7]: http://developer.chrome.com/extensions/packaging.html
