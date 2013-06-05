@@ -1,57 +1,91 @@
 {
-    "name": "深圳大学校园网助手",
-    "version": "0.11",
-    "manifest_version": 2,
-    "description": "解决深圳大学校园网与 Chrome/Chromium 的种种兼容性问题，改善公文通、WebCC、网络电视等校园网产品的细节体验。",
-    "icons": {"16": "icon.png",
-              "48": "icon.png",
-              "128": "icon.png"},
-    "browser_action": {
-        "default_icon": "icon.png",
-        "default_title": "深圳大学校园网",
-        "default_popup": "quick-index.html"
+  "name": "深圳大学校园网助手",
+  "version": "0.11",
+  "manifest_version": 2,
+  "description": "解决深圳大学校园网与 Chrome/Chromium 的兼容性问题",
+  "icons":
+  {
+    "16": "assets/icon.png",
+    "48": "assets/icon.png",
+    "128": "assets/icon.png"
+  },
+  "browser_action":
+  {
+    "default_icon": "assets/icon.png",
+    "default_title": "深圳大学校园网",
+    "default_popup": "views/index.html"
+  },
+  "background":
+  {
+    "scripts": ["lib/background.js"],
+    "persistent": false
+  },
+  "options_page": "views/index.html#option",
+  "content_scripts":
+  [
+    {
+      "js":
+      [
+        "deps/jquery.min.js",
+        "lib/fixers/legacy-password-control/fake-activex.js"
+      ],
+      "css": [],
+      "matches":
+      [
+        "http://*.szu.edu.cn/*",
+        "http://192.168.2.104/*",
+        "http://192.168.2.113/*",
+        "http://192.168.2.210/*"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
     },
-    "background": {
-        "scripts": ["background.js"],
-        "persistent": false
+    {
+      "js":
+      [
+        "deps/jquery.min.js",
+        "lib/fixers/the-office-of-academic-affairs/iframe-height-fixer.js"
+      ],
+      "css": [],
+      "matches": ["http://192.168.2.20/*"],
+      "run_at": "document_end",
+      "all_frames": true
     },
-    "options_page": "quick-index.html#option",
-    "content_scripts": [
-        {"js": ["scripts/jquery.min.js",
-                "scripts/public.js",
-                "scripts/autoauth.js"],
-         "css": [],
-         "matches": ["http://*.szu.edu.cn/*",
-                     "http://192.168.2.104/*",
-                     "http://192.168.2.113/*",
-                     "http://192.168.2.210/*"],
-         "run_at": "document_start",
-         "all_frames": true},
-
-        {"js": ["scripts/jquery.min.js",
-                "scripts/academic-affairs.js"],
-         "css": [],
-         "matches": ["http://192.168.2.20/*"],
-         "run_at": "document_end",
-         "all_frames": true},
-
-        {"js": ["scripts/jquery.min.js",
-                "scripts/board.js"],
-         "css": [],
-         "matches": ["http://www.szu.edu.cn/board/read.asp*"],
-         "run_at": "document_start"},
-
-        {"js": ["scripts/jquery.min.js", "scripts/tv.js"], "css": [],
-         "matches": ["http://www.szu.edu.cn/leisure/*"],
-         "run_at": "document_start",
-         "all_frames": true},
-
-        {"js": ["scripts/jquery.min.js",
-                "scripts/webcc.js"],
-         "css": [],
-         "matches": ["http://192.168.2.104/*",
-                     "http://192.168.2.103/*"],
-         "run_at": "document_start",
-         "all_frames": true}
-    ]
+    {
+      "js":
+      [
+        "deps/jquery.min.js",
+        "lib/fixers/public-board/index-fixer.js"
+      ],
+      "css": [],
+      "matches": ["http://www.szu.edu.cn/board/read.asp*"],
+      "run_at": "document_start"
+    },
+    {
+      "js":
+      [
+        "deps/jquery.min.js",
+        "lib/fixers/online-tv/player-fixer.js"
+      ],
+      "css": [],
+      "matches": ["http://www.szu.edu.cn/leisure/*"],
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "js":
+      [
+        "deps/jquery.min.js",
+        "lib/fixers/legacy-webcc/expandtree-fixer.js"
+      ],
+      "css": [],
+      "matches":
+        [
+          "http://192.168.2.104/*",
+          "http://192.168.2.103/*"
+        ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ]
 }
